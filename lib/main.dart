@@ -1,5 +1,7 @@
 import 'package:bloc_test/bloc/counter/counter_bloc.dart';
 import 'package:bloc_test/bloc/name/name_bloc.dart';
+import 'package:bloc_test/bloc/shop/product_bloc.dart';
+import 'package:bloc_test/bloc/shop/product_event.dart';
 import 'package:bloc_test/bloc/todo/todo_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +22,9 @@ class MyApp extends StatelessWidget {
             create: (context) => CounterBloc(),
           ),
           BlocProvider(create: (context) => NameBloc()),
-          BlocProvider(create: (context) => TodoBloc())
+          BlocProvider(create: (context) => TodoBloc()),
+          BlocProvider(
+              create: (context) => ProductBloc()..add(ProductFetchEvent())),
         ],
         child: HomePage(),
       ),
