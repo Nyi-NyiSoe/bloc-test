@@ -1,5 +1,7 @@
 import 'package:bloc_test/bloc/counter/counter_bloc.dart';
 import 'package:bloc_test/bloc/name/name_bloc.dart';
+import 'package:bloc_test/bloc/shop/category/category_bloc.dart';
+import 'package:bloc_test/bloc/shop/category/category_event.dart';
 import 'package:bloc_test/bloc/shop/product_bloc.dart';
 import 'package:bloc_test/bloc/shop/product_event.dart';
 import 'package:bloc_test/bloc/todo/todo_bloc.dart';
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MultiBlocProvider(
         providers: [
           BlocProvider<CounterBloc>(
@@ -25,6 +28,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => TodoBloc()),
           BlocProvider(
               create: (context) => ProductBloc()..add(ProductFetchEvent())),
+          BlocProvider(
+              create: (context) => CategoryBloc()..add(CategoryFetchEvent()))
         ],
         child: HomePage(),
       ),
